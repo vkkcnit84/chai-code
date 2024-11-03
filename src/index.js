@@ -1,16 +1,22 @@
 import express from 'express';
 import connectToDB from './db/index.js';
-const app = express();
-await connectToDB();
+// import dotenv from 'dotenv';
+import app from './app.js';
+// const app = express();
+// dotenv.config({
+//     path: './env'
+// })
+
+connectToDB();
 app.get('/', (req, res) => {
-    res.send('hi');
+    res.send('hello');
 });
 
 connectToDB()
 .then((res) => {
-    app.listen(process.env.PORT || 9090, () => {
-        console.log('App is running', process.env.PORT);
-    })
+    app.listen(process.env.PORT || 9000, () => {
+        console.log('App is running:', process.env.PORT);
+    });
 })
 .catch((error) => {
     console.log('ERROR:', error);
@@ -19,7 +25,6 @@ connectToDB()
 // app.listen('9000', () => {
 //     console.log('port is running')
 // })
-
 
 
 // ;(async () => {

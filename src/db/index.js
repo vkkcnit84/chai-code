@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
-dotenv.config({
-    path: './env'
-})
+
 const connectToDB = async () => {
     try {
         const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/chaicode?retryWrites=true&w=majority`);
